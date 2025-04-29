@@ -10,6 +10,7 @@ import { SubDepartmentsModule } from './sub-departments/sub-departments.module';
 import { APP_FILTER } from '@nestjs/core';
 import { HttpExceptionFilter } from './common/filters/http-exception-filter';
 import * as Joi from 'joi';
+import { HealthController } from './app.controller';
 
 @Module({
   imports: [
@@ -63,5 +64,6 @@ import * as Joi from 'joi';
       useClass: HttpExceptionFilter,
     },
   ],
+  controllers:[HealthController]
 })
 export class AppModule {}
