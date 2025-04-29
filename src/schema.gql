@@ -1,0 +1,70 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type AuthResponse {
+  access_token: String!
+  user: User!
+}
+
+input CreateDepartmentInput {
+  name: String!
+  subDepartments: [CreateSubDepartmentInput!]
+}
+
+input CreateSubDepartmentInput {
+  name: String!
+}
+
+type Department {
+  id: ID!
+  name: String!
+  subDepartments: [SubDepartment!]
+}
+
+input LoginInput {
+  password: String!
+  username: String!
+}
+
+type Mutation {
+  createDepartment(input: CreateDepartmentInput!): Department!
+  createSubDepartment(createSubDepartmentInput: CreateSubDepartmentInput!): SubDepartment!
+  deleteDepartment(id: Int!): Boolean!
+  login(input: LoginInput!): AuthResponse!
+  removeSubDepartment(id: Int!): SubDepartment!
+  updateDepartment(input: UpdateDepartmentInput!): Department!
+  updateSubDepartment(updateSubDepartmentInput: UpdateSubDepartmentInput!): SubDepartment!
+}
+
+type PaginatedDepartments {
+  departments: [Department!]!
+  total: Int!
+}
+
+type Query {
+  department(id: Int!): Department!
+  getDepartments(limit: Int! = 10, page: Int! = 1): PaginatedDepartments!
+  subDepartment(id: Int!): SubDepartment!
+  subDepartments: [SubDepartment!]!
+}
+
+type SubDepartment {
+  id: ID!
+  name: String!
+}
+
+input UpdateDepartmentInput {
+  id: ID!
+  name: String!
+}
+
+input UpdateSubDepartmentInput {
+  id: ID!
+  name: String!
+}
+
+type User {
+  id: ID!
+  username: String!
+}
